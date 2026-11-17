@@ -1,0 +1,170 @@
+[
+  {
+    "label": "New Zealand",
+    "endDate": "Wed, 18 Nov 2026 06:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Australia",
+    "endDate": "Wed, 18 Nov 2026 08:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Japan | South Korea",
+    "endDate": "Wed, 18 Nov 2026 10:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Hong Kong | Taiwan",
+    "endDate": "Wed, 18 Nov 2026 11:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Malaysia | Singapore",
+    "endDate": "Wed, 18 Nov 2026 11:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Indonesia | Thailand",
+    "endDate": "Wed, 18 Nov 2026 12:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "India",
+    "endDate": "Wed, 18 Nov 2026 13:30:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "United Arab Emirates",
+    "endDate": "Wed, 18 Nov 2026 15:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Saudi Arabia | Turkey",
+    "endDate": "Wed, 18 Nov 2026 16:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Bulgaria | Cyprus | Finland",
+    "endDate": "Wed, 18 Nov 2026 17:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Greece | Romania",
+    "endDate": "Wed, 18 Nov 2026 17:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "South Africa",
+    "endDate": "Wed, 18 Nov 2026 17:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Ukraine",
+    "endDate": "Wed, 18 Nov 2026 17:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Austria | Germany | Switzerland",
+    "endDate": "Wed, 18 Nov 2026 18:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Belgium | Netherlands | Luxembourg",
+    "endDate": "Wed, 18 Nov 2026 18:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Denmark | Norway | Sweden",
+    "endDate": "Wed, 18 Nov 2026 18:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Poland | Slovakia | Czech Republic",
+    "endDate": "Wed, 18 Nov 2026 18:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "France | Spain | Italy | Malta",
+    "endDate": "Wed, 18 Nov 2026 18:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Croatia | Slovenia | Hungary",
+    "endDate": "Wed, 18 Nov 2026 18:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Iceland | Portugal",
+    "endDate": "Wed, 18 Nov 2026 19:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Ireland | United Kingdom",
+    "endDate": "Wed, 18 Nov 2026 19:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Argentina | Chile | Brazil",
+    "endDate": "Wed, 18 Nov 2026 22:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Paraguay | Uruguay",
+    "endDate": "Wed, 18 Nov 2026 22:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Bolivia",
+    "endDate": "Wed, 18 Nov 2026 23:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "United States | Canada",
+    "endDate": "Thu, 19 Nov 2026 00:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Colombia | Ecuador | Panama | Peru",
+    "endDate": "Thu, 19 Nov 2026 00:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Mexico | Guatemala | El Salvador",
+    "endDate": "Thu, 19 Nov 2026 01:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  },
+  {
+    "label": "Costa Rica | Honduras | Nicaragua",
+    "endDate": "Thu, 19 Nov 2026 01:00:00 -0500",
+    "timezoneOffset": "-0500",
+    "timezoneAbbr": "EST"
+  }
+]

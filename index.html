@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTA VI Live Countdown | Vice City Stream Edition</title>
+  <meta name="description" content="Ultimate Grand Theft Auto VI Live Countdown Timer. Designed for YouTube Live Streaming, OBS Studio, and fans worldwide.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%23ff007f'>VI</text></svg>">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,700;0,900;1,900&family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="theme-sunset" id="appBody">
+
+  <!-- Background Canvas & Video Layer -->
+  <div id="background-container">
+    <canvas id="bg-canvas"></canvas>
+    <div id="video-bg-container" class="hidden">
+      <video id="bg-video" autoplay loop muted playsinline></video>
+    </div>
+    <!-- Visual Overlays -->
+    <div class="overlay-gradient"></div>
+    <div class="overlay-scanlines" id="scanlinesOverlay"></div>
+    <div class="overlay-vignette"></div>
+  </div>
+
+  <!-- Main Stream / Display Wrapper -->
+  <div id="stream-wrapper">
+
+    <!-- Top Stream Bar / Branding -->
+    <header id="top-bar" class="hud-element">
+      <div class="brand-badge">
+        <span class="live-dot"><i class="fa-solid fa-circle"></i> LIVE STREAM</span>
+        <span class="badge-separator">|</span>
+        <span class="leonida-badge"><i class="fa-solid fa-location-dot"></i> VICE CITY / LEONIDA</span>
+      </div>
+
+      <div class="top-actions">
+        <!-- Launch Timezones Toggle (vicountdown.com) -->
+        <button id="btnTimezones" class="btn-action btn-timezones" title="Launch Timezones by Region">
+          <i class="fa-solid fa-earth-americas"></i>
+          <span class="btn-label" id="activeRegionBtnText">Launch Timezones</span>
+        </button>
+
+        <!-- Audio Player Toggle -->
+        <button id="btnAudioToggle" class="btn-action" title="Synthwave Ambient Audio (Toggle M)">
+          <i class="fa-solid fa-volume-xmark" id="audioIcon"></i>
+          <span class="btn-label" id="audioLabel">Synth Radio</span>
+          <div class="audio-waves" id="audioWaves">
+            <span></span><span></span><span></span><span></span>
+          </div>
+        </button>
+
+        <!-- Clean Mode (OBS / Stream Focus) -->
+        <button id="btnCleanMode" class="btn-action btn-highlight" title="Clean Stream Mode (Toggle H)">
+          <i class="fa-solid fa-eye-slash"></i>
+          <span class="btn-label">Clean HUD [H]</span>
+        </button>
+
+        <!-- Fullscreen -->
+        <button id="btnFullscreen" class="btn-action" title="Fullscreen (Toggle F)">
+          <i class="fa-solid fa-expand" id="fullscreenIcon"></i>
+        </button>
+
+        <!-- Settings Modal Trigger -->
+        <button id="btnSettings" class="btn-action" title="Stream & Countdown Settings">
+          <i class="fa-solid fa-gear"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Centerpiece: GTA VI Logo & Countdown -->
+    <main id="main-content">
+
+      <!-- Logo Section -->
+      <div class="gta-header">
+        <h2 class="sub-brand">GRAND THEFT AUTO</h2>
+        <div class="vi-container">
+          <span class="vi-roman">VI</span>
+          <div class="vi-shimmer"></div>
+        </div>
+        <p class="tagline" id="taglineText">OFFICIAL RELEASE COUNTDOWN</p>
+      </div>
+
+      <!-- Main Countdown Box -->
+      <div class="countdown-card" id="countdownCard">
+        <div class="timer-grid">
+
+          <!-- DAYS -->
+          <div class="time-segment" data-unit="days">
+            <div class="digit-box">
+              <span class="digit-value" id="valDays">000</span>
+              <div class="box-reflection"></div>
+            </div>
+            <div class="unit-label">DAYS</div>
+          </div>
+
+          <div class="time-separator">:</div>
+
+          <!-- HOURS -->
+          <div class="time-segment" data-unit="hours">
+            <div class="digit-box">
+              <span class="digit-value" id="valHours">00</span>
+              <div class="box-reflection"></div>
+            </div>
+            <div class="unit-label">HOURS</div>
+          </div>
+
+          <div class="time-separator">:</div>
+
+          <!-- MINUTES -->
+          <div class="time-segment" data-unit="minutes">
+            <div class="digit-box">
+              <span class="digit-value" id="valMinutes">00</span>
+              <div class="box-reflection"></div>
+            </div>
+            <div class="unit-label">MINUTES</div>
+          </div>
+
+          <div class="time-separator">:</div>
+
+          <!-- SECONDS -->
+          <div class="time-segment" data-unit="seconds">
+            <div class="digit-box">
+              <span class="digit-value" id="valSeconds">00</span>
+              <div class="box-reflection"></div>
+            </div>
+            <div class="unit-label">SECONDS</div>
+          </div>
+
+          <!-- MILLISECONDS (Adds incredible live stream energy!) -->
+          <div class="time-separator ms-separator">:</div>
+          <div class="time-segment ms-segment" id="msSegment" data-unit="milliseconds">
+            <div class="digit-box ms-box">
+              <span class="digit-value ms-value" id="valMs">000</span>
+            </div>
+            <div class="unit-label">MILLISECONDS</div>
+          </div>
+
+        </div>
+
+        <!-- Target Date Sub-info -->
+        <div class="countdown-info">
+          <span class="target-label"><i class="fa-regular fa-calendar-check"></i> TARGET:</span>
+          <span class="target-val" id="targetDateDisplay">Fall 2026 (Expected Release)</span>
+          <span class="info-dot">•</span>
+          <span class="local-time" id="localTimeDisplay">00:00:00 LOCAL TIME</span>
+        </div>
+
+        <!-- Milestone Progress Bar -->
+        <div class="milestone-container" id="milestoneContainer">
+          <div class="progress-info">
+            <span>TRAILER 1 (DEC 2023)</span>
+            <span id="progressPercent">0%</span>
+            <span>LAUNCH DAY</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progressFill" style="width: 50%;"></div>
+            <div class="progress-glow"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Stats Row (Streamer friendly) -->
+      <div class="stats-row hud-element" id="statsRow">
+        <div class="stat-pill">
+          <i class="fa-solid fa-hourglass-half"></i>
+          <span>Time Since Trailer 1: <strong id="statDaysSinceTrailer">0</strong> Days</span>
+        </div>
+        <div class="stat-pill">
+          <i class="fa-solid fa-gamepad"></i>
+          <span>Platforms: <strong>PS5 & Xbox Series X|S</strong></span>
+        </div>
+        <div class="stat-pill">
+          <i class="fa-solid fa-eye"></i>
+          <span>Trailer 1 Views: <strong>260M+</strong></span>
+        </div>
+      </div>
+
+      <!-- YouTube Streamer Goal Banner (Optional Overlay for Streamer) -->
+      <div class="streamer-sub-goal hud-element hidden" id="subGoalWidget">
+        <div class="goal-header">
+          <span><i class="fa-brands fa-youtube"></i> LIVE STREAM GOAL</span>
+          <span id="subGoalText">1,250 / 2,000 Subs</span>
+        </div>
+        <div class="goal-bar">
+          <div class="goal-fill" id="subGoalFill" style="width: 62.5%;"></div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Bottom Ticker / News Ticker Bar -->
+    <footer id="bottom-bar" class="hud-element">
+      <div class="ticker-badge">
+        <span class="ticker-dot"></span> VICE CITY NEWS
+      </div>
+      <div class="ticker-content" id="tickerWrap">
+        <div class="ticker-text" id="tickerText">
+          🌴 GTA 6 LAUNCHES NOVEMBER 19, 2026 • ROLLING REGIONAL MIDNIGHT LAUNCHES BASED ON PS / XBOX ACCOUNTS (VICOUNTDOWN.COM) • STARTING IN NEW ZEALAND • CLICK 'LAUNCH TIMEZONES' TO CHECK YOUR REGION • DROP A LIKE & SUBSCRIBE TO THE STREAM • STATE OF LEONIDA 🌴
+        </div>
+      </div>
+      <div class="bottom-controls">
+        <!-- Quick Theme Switcher Button -->
+        <button id="btnQuickTheme" class="btn-tool" title="Cycle Background Theme (Press B)">
+          <i class="fa-solid fa-palette"></i> <span id="themeNameDisplay">Sunset</span>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Clean Mode Floating Restore Pill (Only shows in clean mode on hover) -->
+    <div id="cleanModeRestore" class="hidden">
+      <span>Stream Mode Active</span>
+      <button id="btnExitClean">Exit [H]</button>
+    </div>
+
+  </div>
+
+  <!-- Settings & Customization Modal -->
+  <div class="modal-overlay hidden" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-sliders"></i> Streamer & Countdown Settings</h3>
+        <button class="modal-close" id="btnCloseModal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Target Date Configuration -->
+        <div class="setting-group">
+          <h4><i class="fa-solid fa-clock"></i> Countdown Target & Launch Region</h4>
+          <label>Select Launch Region (vicountdown.com):</label>
+          <select id="selectRegionPreset" class="form-input"></select>
+          <div id="customDateRow" class="custom-date-row hidden mt-1">
+            <label>Custom Date & Time:</label>
+            <input type="datetime-local" id="inputCustomDate" class="form-input">
+          </div>
+        </div>
+
+        <!-- Background Aesthetic -->
+        <div class="setting-group">
+          <h4><i class="fa-solid fa-image"></i> Background Aesthetic</h4>
+          <label>Choose Background Mode:</label>
+          <div class="theme-options">
+            <button class="btn-theme-opt active" data-theme="sunset">
+              <i class="fa-solid fa-sun"></i> Vice Sunset
+            </button>
+            <button class="btn-theme-opt" data-theme="grid">
+              <i class="fa-solid fa-border-none"></i> Neon Grid 3D
+            </button>
+            <button class="btn-theme-opt" data-theme="night">
+              <i class="fa-solid fa-moon"></i> Starry Vice
+            </button>
+            <button class="btn-theme-opt" data-theme="chroma">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> OBS Green Screen
+            </button>
+            <button class="btn-theme-opt" data-theme="custom-video">
+              <i class="fa-solid fa-film"></i> Video / Custom
+            </button>
+          </div>
+
+          <!-- Custom Video URL Input -->
+          <div id="customVideoInputRow" class="hidden mt-2">
+            <label>Direct MP4 or WebM Video URL:</label>
+            <input type="url" id="inputCustomVideo" class="form-input" placeholder="https://example.com/vice-city-loop.mp4">
+            <button id="btnApplyVideo" class="btn-primary-small mt-1">Load Video</button>
+          </div>
+        </div>
+
+        <!-- Stream Display Options -->
+        <div class="setting-group">
+          <h4><i class="fa-solid fa-desktop"></i> Stream Display Options</h4>
+          <div class="toggle-row">
+            <span>Show Milliseconds (High Energy)</span>
+            <input type="checkbox" id="toggleMilliseconds" checked>
+          </div>
+          <div class="toggle-row">
+            <span>Show Milestone Progress Bar</span>
+            <input type="checkbox" id="toggleProgress" checked>
+          </div>
+          <div class="toggle-row">
+            <span>Show Stats Row</span>
+            <input type="checkbox" id="toggleStats" checked>
+          </div>
+          <div class="toggle-row">
+            <span>Show Retro Scanlines</span>
+            <input type="checkbox" id="toggleScanlines" checked>
+          </div>
+          <div class="toggle-row">
+            <span>Show Bottom News Ticker</span>
+            <input type="checkbox" id="toggleTicker" checked>
+          </div>
+          <div class="toggle-row">
+            <span>Show YouTube Sub Goal Overlay</span>
+            <input type="checkbox" id="toggleSubGoal">
+          </div>
+        </div>
+
+        <!-- Customizable Ticker & Channel Info -->
+        <div class="setting-group">
+          <h4><i class="fa-solid fa-bullhorn"></i> Custom News Ticker Text</h4>
+          <input type="text" id="inputTickerText" class="form-input" value="🌴 LIVE GTA 6 COUNTDOWN • SUBSCRIBE TO THE STREAM • LIKE & SHARE • STAY TUNED FOR NEW TRAILER DROPS 🌴">
+          <button id="btnSaveTicker" class="btn-primary-small mt-1">Update Ticker</button>
+        </div>
+
+        <!-- Stream Goal Settings -->
+        <div class="setting-group">
+          <h4><i class="fa-brands fa-youtube"></i> Streamer Goal Settings</h4>
+          <div class="grid-2">
+            <div>
+              <label>Goal Title:</label>
+              <input type="text" id="inputGoalTitle" class="form-input" value="SUBSCRIBER GOAL">
+            </div>
+            <div>
+              <label>Current / Target:</label>
+              <div class="flex-row">
+                <input type="number" id="inputGoalCurrent" class="form-input" value="1250">
+                <span class="slash">/</span>
+                <input type="number" id="inputGoalTarget" class="form-input" value="2000">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OBS Studio Integration Guide -->
+        <div class="setting-group obs-guide">
+          <h4><i class="fa-solid fa-video"></i> OBS Studio One-Click Setup</h4>
+          <p>Add this page directly as an <strong>OBS Browser Source</strong> for flawless streaming!</p>
+          <div class="code-box">
+            <code id="obsUrlCopy">http://localhost:8000/?clean=1&theme=sunset</code>
+            <button id="btnCopyObsUrl" class="btn-copy"><i class="fa-regular fa-copy"></i> Copy</button>
+          </div>
+          <small>Use 1920x1080 resolution in OBS. <code>?clean=1</code> removes all buttons automatically!</small>
+        </div>
+
+        <!-- Hotkeys Cheatsheet -->
+        <div class="setting-group">
+          <h4><i class="fa-solid fa-keyboard"></i> Streamer Hotkeys</h4>
+          <div class="hotkeys-grid">
+            <div><kbd>H</kbd> <span>Toggle Clean Stream Mode</span></div>
+            <div><kbd>F</kbd> <span>Toggle Fullscreen</span></div>
+            <div><kbd>M</kbd> <span>Toggle Ambient Audio</span></div>
+            <div><kbd>B</kbd> <span>Cycle Backgrounds</span></div>
+            <div><kbd>S</kbd> <span>Open Settings</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Launch Timezones Modal (vicountdown.com timezones grid) -->
+  <div class="modal-overlay hidden" id="timezonesModal">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <div>
+          <h3><i class="fa-solid fa-earth-americas"></i> Launch Timezones</h3>
+          <p class="modal-subtitle">Check the Countdown to launch based on the region of your PlayStation / Xbox account (via vicountdown.com)</p>
+        </div>
+        <button class="modal-close" id="btnCloseTimezones"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="tz-search-bar">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="inputTzSearch" class="form-input search-input" placeholder="Search your country (e.g. United States, UK, Japan, Australia, Germany)...">
+        </div>
+        <div class="timezones-grid" id="timezonesListGrid">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/audio.js"></script>
+  <script src="js/backgrounds.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/streamer-tools.js"></script>
+</body>
+</html>
