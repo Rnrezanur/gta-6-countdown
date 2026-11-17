@@ -37,6 +37,7 @@ class StreamerTools {
     // Toggles
     this.toggleMilliseconds = document.getElementById('toggleMilliseconds');
     this.toggleProgress = document.getElementById('toggleProgress');
+    this.toggleHomeRegions = document.getElementById('toggleHomeRegions');
     this.toggleStats = document.getElementById('toggleStats');
     this.toggleScanlines = document.getElementById('toggleScanlines');
     this.toggleTicker = document.getElementById('toggleTicker');
@@ -159,6 +160,13 @@ class StreamerTools {
       this.toggleProgress.addEventListener('change', (e) => {
         const el = document.getElementById('milestoneContainer');
         if (el) el.style.display = e.target.checked ? 'block' : 'none';
+      });
+    }
+
+    if (this.toggleHomeRegions) {
+      this.toggleHomeRegions.addEventListener('change', (e) => {
+        const el = document.getElementById('homeRegionsSection');
+        if (el) el.style.display = e.target.checked ? 'flex' : 'none';
       });
     }
 

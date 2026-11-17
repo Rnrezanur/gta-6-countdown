@@ -171,6 +171,17 @@
 
       </div>
 
+      <!-- Home Page Live Regional Countdowns (vicountdown.com) -->
+      <div class="home-regions-section" id="homeRegionsSection">
+        <div class="home-regions-header">
+          <span class="regions-title"><i class="fa-solid fa-earth-americas"></i> REGIONAL MIDNIGHT UNLOCKS</span>
+          <button id="btnViewAllTimezones" class="btn-link-tz">View All 28 Regions <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div class="home-regions-track" id="homeRegionsTrack">
+          <!-- Dynamically populated with live country mini cards -->
+        </div>
+      </div>
+
       <!-- Quick Stats Row (Streamer friendly) -->
       <div class="stats-row hud-element" id="statsRow">
         <div class="stat-pill">
@@ -286,6 +297,10 @@
           <div class="toggle-row">
             <span>Show Milestone Progress Bar</span>
             <input type="checkbox" id="toggleProgress" checked>
+          </div>
+          <div class="toggle-row">
+            <span>Show Home Regional Countdowns Track</span>
+            <input type="checkbox" id="toggleHomeRegions" checked>
           </div>
           <div class="toggle-row">
             <span>Show Stats Row</span>
