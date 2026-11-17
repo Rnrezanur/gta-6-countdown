@@ -1,8 +1,13 @@
 # 🌴 GTA VI Live Countdown - Vice City YouTube Stream Edition
 
+[![Live Website](https://img.shields.io/badge/Live_Website-rnrezanur.github.io%2Fgta--6--countdown-ff007f?style=for-the-badge&logo=google-chrome&logoColor=white)](https://rnrezanur.github.io/gta-6-countdown/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Rnrezanur%2Fgta--6--countdown-00f0ff?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Rnrezanur/gta-6-countdown)
+
+> **Live Website URL**: **[https://rnrezanur.github.io/gta-6-countdown/](https://rnrezanur.github.io/gta-6-countdown/)**
+
 An ultra high-production, cinematic **Grand Theft Auto VI Countdown Website** specifically engineered for **YouTube Live Streams, OBS Studio, and fans worldwide**.
 
-Featuring a mesmerizing, 60-FPS animated procedural Vice City sunset background, synthwave ambient radio, live millisecond counter, stream ticker, and one-click OBS clean mode.
+Featuring a mesmerizing 60-FPS animated procedural Vice City sunset background, 28 regional midnight launches, home page live country countdown cards, synthwave ambient radio, live millisecond counter, stream ticker, and one-click OBS clean mode.
 
 ---
 

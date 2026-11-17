@@ -20,7 +20,7 @@ class StreamerTools {
     this.settingsModal = document.getElementById('settingsModal');
     this.btnCloseModal = document.getElementById('btnCloseModal');
 
-    // Timezones Modal (vicountdown.com)
+    // Launch Timezones Modal
     this.btnTimezones = document.getElementById('btnTimezones');
     this.btnCloseTimezones = document.getElementById('btnCloseTimezones');
     this.timezonesModal = document.getElementById('timezonesModal');
@@ -102,7 +102,7 @@ class StreamerTools {
       });
     }
 
-    // Launch Timezones Modal (vicountdown.com)
+    // Launch Timezones Modal
     if (this.btnTimezones) {
       this.btnTimezones.addEventListener('click', () => this.openTimezones());
     }

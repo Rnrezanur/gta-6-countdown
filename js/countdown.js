@@ -1,6 +1,5 @@
 /**
  * GTA VI Live Countdown - Countdown Engine
- * Follows official community launch tracker: https://vicountdown.com/pages/timezones
  * Includes 28 rolling regional midnight launches based on PlayStation & Xbox account region.
  */
 
@@ -29,7 +28,7 @@ class CountdownEngine {
     // Milestones
     this.TRAILER_1_DATE = new Date('2023-12-05T09:00:00-05:00').getTime();
 
-    // 28 Launch Timezones directly from https://vicountdown.com/pages/timezones
+    // 28 Launch Timezones worldwide
     this.regions = [
       { id: "nz", label: "New Zealand", endDate: "Wed, 18 Nov 2026 06:00:00 -0500", flag: "🇳🇿" },
       { id: "au", label: "Australia", endDate: "Wed, 18 Nov 2026 08:00:00 -0500", flag: "🇦🇺" },
@@ -66,7 +65,7 @@ class CountdownEngine {
       r.timestamp = new Date(r.endDate).getTime();
     });
 
-    // Default to United States | Canada (standard main countdown on vicountdown.com)
+    // Default to United States | Canada
     this.currentRegionId = localStorage.getItem('gta6_active_region') || 'us-ca';
     this.customTimestamp = localStorage.getItem('gta6_custom_target') ? parseInt(localStorage.getItem('gta6_custom_target'), 10) : null;
 
